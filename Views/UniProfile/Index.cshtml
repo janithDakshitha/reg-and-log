@@ -1,0 +1,59 @@
+﻿@model IEnumerable<UniProfileModel>
+@{
+    ViewData["title"] = "Index";
+}
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>
+
+            </th>
+            <th>@Html.DisplayNameFor(model =>model.Uni_FullName)</th>
+            @*<th>@Html.DisplayNameFor(model =>model.ProfilPic_URL)</th>*@
+            
+            <th>@Html.DisplayNameFor(model =>model.Uni_ShortName)</th>
+            <th>@Html.DisplayNameFor(model =>model.Uni_Details)</th>
+            <th>@Html.DisplayNameFor(model =>model.Uni_FacultyID)</th>
+            <th>@Html.DisplayNameFor(model =>model.ImageExtension)</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Uni_ID</td>
+                <td>@item.Uni_ShortName</td>
+            
+                <td><img src="~/profilepics/@item.ProfilPic_URL" style="width:75px;height:75px;"/></td>
+            
+            
+                <td>@item.Uni_ShortName</td>
+            
+            
+                <td>@item.Uni_Details</td>
+            
+           
+                <td>@item.Uni_FacultyID</td>
+                <td>@item.ImageExtension</td>
+            
+               
+            
+    
+        <td>
+            <div class="btn-group">
+                        <a asp-action="Degree1" asp-route-id="@item.Uni_ID" class="btn btn-sm btn-primary ml-1">Degree</a>
+                <a asp-action="Edit" asp-route-id="@item.Uni_ID" class="btn btn-sm btn-info">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Uni_ID" class="btn btn-sm btn-primary ml-1">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Uni_ID" class="btn btn-sm btn-danger ml-1">Delete</a>
+            </div>
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
